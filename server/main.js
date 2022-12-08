@@ -5,12 +5,12 @@ const cors = require('cors')
 app.use(cors())
 const server = http.createServer(app);
 const {Server} = require('socket.io')
-const PORT = 5000;
+const PORT = 5025;
 
 
 const io = new Server(server, {
     cors: {
-        origin: 'http://0.0.0.0:5000',
+        origin: 'http://localhost:3000',
         methods: ['GET', 'POST']
 
     }, 
@@ -23,7 +23,14 @@ io.on('connection', (socket)=> {
     socket.on('disconnect', ()=> {
         console.log("USER Disconnected: " + socket.id);
     })
-}
+
+    socket.on('join_chat', (data) => {
+        socket.join(data.room_id);
+        console.log("USER Joined: " + data.user_name);
+        console.log("ROOM ID: " + data.room_id);
+    })
+    
+})
 
 
 
