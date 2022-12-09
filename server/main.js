@@ -10,7 +10,7 @@ const PORT = 5025;
 
 const io = new Server(server, {
     cors: {
-        origin: 'http://localhost:3000',
+        origin: '*',
         methods: ['GET', 'POST']
 
     }, 
@@ -29,7 +29,9 @@ io.on('connection', (socket)=> {
         console.log("USER Joined: " + data.user_name);
         console.log("ROOM ID: " + data.room_id);
     })
-    
+    socket.on("send_message", (data) => {
+        socket.to(data.room).emit("receive_message", data);
+      });
 })
 
 

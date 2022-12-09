@@ -51,16 +51,18 @@ body {
 }
 
 .chat-window {
-  width: 300px;
-  height: 420px;
+  width: auto;
+  height: auto;
+  border-radius: 20px;
+
 }
 
 .chat-window p {
   margin: 0;
 }
 .chat-window .chat-header {
-  height: 45px;
-  border-radius: 6px;
+  height: 20%;
+  border-radius: 10px;
   background: #263238;
   position: relative;
   cursor: pointer;
@@ -75,9 +77,9 @@ body {
 
 .chat-window .chat-body {
   height: calc(450px - (45px + 70px));
-  border: 1px solid #263238;
+  border: 2px solid #263238;
+  border-radius: 10px;
   background: #fff;
-
   position: relative;
 }
 .chat-window .chat-body .message-container {
@@ -152,8 +154,9 @@ body {
 }
 
 .chat-window .chat-footer {
-  height: 40px;
-  border: 1px solid #263238;
+  height: 8%;
+  border: 2px solid #263238;
+  border-radius: 10px;
   border-top: none;
   display: flex;
 }
@@ -165,7 +168,6 @@ body {
   padding: 0 0.7em;
   font-size: 1em;
   border-right: 1px dotted #607d8b;
-
   outline: none;
   font-family: "Open Sans", sans-serif;
 }

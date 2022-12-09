@@ -2,29 +2,29 @@ import './App.css';
 import io from 'socket.io-client';
 import {useState} from 'react'
 import Chats from './pages/Chats';
+import JoinRoom from './pages/JoinRoom';
 
-const socket = io.connect("http://localhost:5025")
+const socket = io.connect("http://192.168.0.74:5025")
 function App() {
   const [username, setusername] = useState("");
   const [roomid, setroomid] = useState("");
+  const [connected, setconnected] = useState(false);
   const joinChat = () =>{
     if(username !== "" && roomid !== ""){
       socket.emit("join_chat", {user_name: username, room_id: roomid})
+      setconnected(true);
     }
 
   }
   return (
     <>
-      <h1>
-        Animus Chat Application
-      </h1>
-      <h3>
-        Join Room
-      </h3>
-      <input type="text" placeholder="Enter Username" onChange={(event)=>{setusername(event.target.value)}}/>
-      <input type="text" placeholder="Enter Room ID" onChange={(event)=>{setroomid(event.target.value)}}/>
-      <button onClick={joinChat}>Join</button>
-    <Chats socket={socket} username={username} room={roomid} />
+      
+      {// online if else statements
+        connected? 
+        (<Chats socket={socket} username={username} room={roomid} />):
+        (<JoinRoom username={username} roomid={roomid} joinChat={joinChat} setroomid={setroomid} setusername={setusername}/>)
+      }
+      
     </>
   );
 }
