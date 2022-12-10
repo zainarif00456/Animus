@@ -1,5 +1,5 @@
 import React from 'react'
-
+import { Link } from 'react-router-dom'
 function JoinRoom(props) {
   return (
     <>
@@ -34,7 +34,7 @@ function JoinRoom(props) {
 </div>
 <div className='container my-3'>
   <center>
-<button className='btn btn-outline-success' onClick={props.joinChat}>Join Room</button>
+<button className='btn btn-outline-success' onClick={props.joinChat}>Join Room </button>
 </center>
 </div>
 </div>

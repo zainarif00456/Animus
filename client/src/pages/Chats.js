@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ScrollToBottom from "react-scroll-to-bottom";
-
+import {Link} from "react-router-dom"
 function Chats(props) {
   const [currentMessage, setCurrentMessage] = useState("");
   const [messageList, setMessageList] = useState([]);
@@ -29,9 +29,31 @@ function Chats(props) {
       
     });
   }, [props.socket]);
-
+// const backbtn = "<";
   return (
     <>
+<nav className="navbar navbar-dark bg-dark mb-3">
+  <div className="container-fluid">
+    
+      <font style={{color: "white"}}>
+      <center>
+    <h2>
+      ANIMUS CHAT
+    </h2>
+
+   {/* <h3>
+        <button className="btn btn-outline-dark" style={{color: "white", fontSize: "25px"}} 
+        onClick={()=>{props.setconnected(false)}}
+        > {backbtn} </button>
+      </h3> */}
+      </center>
+      </font>
+      
+  </div>
+</nav>
+
+
+
     <div className="container">
       <center>
     <div className="chat-window my-3">
@@ -65,7 +87,7 @@ function Chats(props) {
       </div>
       <div className="chat-footer">
         <input
-        className="my-2"
+        className="my-3"
           type="text"
           value={currentMessage}
           placeholder="Hey..."
